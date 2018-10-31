@@ -8,11 +8,12 @@ const initializeBoard = boardLength => {
 }
 console.log(gameBoard)
 
-// const onAddX = function () {
-//
-// }
+const onAddX = function (event) {
+  event.preventDefault()
+  console.log(gameBoard)
+}
 
 module.exports = {
-  initializeBoard // ,
-  // onAddX
+  initializeBoard,
+  onAddX
 }

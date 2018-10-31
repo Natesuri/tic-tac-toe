@@ -12,5 +12,5 @@ const boardLength = 9
 
 $(() => {
   events.initializeBoard(boardLength)
-  // $('#addX').on('submit', events.onAddX)
+  $('#addX').on('submit', events.onAddX)
 })
