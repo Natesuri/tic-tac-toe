@@ -6,6 +6,11 @@
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
+const events = require('./game/event.js')
+
+const boardLength = 9
+
 $(() => {
-  // your JS code goes here
+  events.initializeBoard(boardLength)
+  // $('#addX').on('submit', events.onAddX)
 })
