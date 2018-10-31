@@ -1,0 +1,21 @@
+$tile-width: 200px;
+$tile-height: $tile-width;
+
+body {
+}
+
+.board {
+  margin: 10px;
+}
+
+.tile {
+  background: $board-background;
+  width: $tile-width;
+  height: $tile-height;
+  border: solid black 1px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
