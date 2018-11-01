@@ -6,6 +6,7 @@
   },
   "rules": {
     "prefer-const": "error",
-    "no-var": "error"
+    "no-var": "error",
+    "camelcase": 0
   }
 }

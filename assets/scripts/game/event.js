@@ -31,16 +31,16 @@ const initializeBoard = boardLength => {
 console.log(gameBoard)
 
 const checkForOver = function () {
-  playersTie()
+  checkForPlayersTie()
 }
 
-const playerWin = false
+const checkForPlayerWin = false
 
-const playersTie = function () {
+const checkForPlayersTie = function () {
   // console.log('checking to see if its over')
   // console.log(playerWin)
   const checkForEmptyTile = val => val !== ''
-  if (!playerWin && gameBoard.every(checkForEmptyTile)) {
+  if (!checkForPlayerWin && gameBoard.every(checkForEmptyTile)) {
     console.log('It\'s a tie!')
   }
 }
