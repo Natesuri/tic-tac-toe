@@ -15,5 +15,6 @@ $(() => {
   events.initializeBoard(boardLength)
   // later will load on sign in
   // events.loadStartingPlayer()
-  $('#1').on('submit', events.onAddMoveValue)
+  // $('#1').on('submit', events.onAddMoveValue)
+  $('.tile').on('click', events.onAddMoveValue)
 })

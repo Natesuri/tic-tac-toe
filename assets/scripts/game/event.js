@@ -30,8 +30,24 @@ const initializeBoard = boardLength => {
 }
 console.log(gameBoard)
 
+const checkForOver = function () {
+  playersTie()
+}
+
+const playerWin = false
+
+const playersTie = function () {
+  // console.log('checking to see if its over')
+  // console.log(playerWin)
+  const checkForEmptyTile = val => val !== ''
+  if (!playerWin && gameBoard.every(checkForEmptyTile)) {
+    console.log('It\'s a tie!')
+  }
+}
+
 // button that is simulating a click on a given tile
 const onAddMoveValue = function (event) {
+  // console.log('you clicked' + event.target.id)
   event.preventDefault()
   // iterate through the gameBoard array
   for (let i = 0; i < gameBoard.length; i++) {
@@ -44,6 +60,7 @@ const onAddMoveValue = function (event) {
       console.log(gameBoard)
       togglePlayer()
       console.log(currentPlayer)
+      checkForOver()
     }
   }
 }
