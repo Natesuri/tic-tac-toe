@@ -2,6 +2,9 @@ const gameBoard = []
 
 let rowLength = null
 
+let playerXWin = null
+let playerOWin = null
+
 // dummy data for testing
 const player_x = {
   id: 1,
@@ -29,16 +32,15 @@ const initializeBoard = boardLength => {
     gameBoard.push('')
   }
   rowLength = Math.sqrt(gameBoard.length)
+  playerXWin = player_x.moveValue.repeat(rowLength)
+  playerOWin = player_o.moveValue.repeat(rowLength)
   return gameBoard
 }
-
-// const playerXWin = player_x.moveValue.repeat(rowLength)
-// const playerOWin = player_o.moveValue.repeat(rowLength)
 
 const checkForOver = function () {
   checkForPlayerWin()
   checkForPlayersTie()
-  // console.log(playerXWin)
+  // console.log('playerXWin is ' + playerXWin)
   // console.log(rowLength)
   // console.log(currentPlayer.moveValue)
 }
@@ -48,6 +50,7 @@ const checkForPlayerWin = function () {
   checkForRowWin()
   checkForLRDiagWin()
   checkForRLDiagWin()
+  // console.log('playerXWin is ' + playerXWin)
   // console.log(checkForRowWin())
   // console.log(checkForColumnWin())
 }
@@ -69,11 +72,11 @@ const checkForColumnWin = function () {
       // console.log('column checker', winColumnChecker)
       // if winColumnChecker can be reduced to three x or three o,
       // then the player wins.
-      if (winColumnChecker.reduce(accumulator) === 'xxx') {
+      if (winColumnChecker.reduce(accumulator) === playerXWin) {
         console.log('Player X wins')
         return true
       }
-      if (winColumnChecker.reduce(accumulator) === 'ooo') {
+      if (winColumnChecker.reduce(accumulator) === playerOWin) {
         console.log('Player O wins')
         return true
       }
@@ -100,10 +103,10 @@ const checkForRowWin = function () {
       // console.log('row checker', winRowChecker)
       // if winColumnRowChecker can be reduced to three x or three o,
       // then the player wins.
-      if (winRowChecker.reduce(accumulator) === 'xxx') {
+      if (winRowChecker.reduce(accumulator) === playerXWin) {
         console.log('Player X wins')
       }
-      if (winRowChecker.reduce(accumulator) === 'ooo') {
+      if (winRowChecker.reduce(accumulator) === playerOWin) {
         console.log('Player O wins')
       }
     }
@@ -115,15 +118,15 @@ const checkForLRDiagWin = function () {
   const accumulator = (acc, val) => acc + val
   const winDiagChecker = []
   // iterate through the array by skipping diagonally left to right
-  for (let y = 0; y < gameBoard.length; y += rowLength + 1) {
+  for (let y = 0; y < gameBoard.length; y += (rowLength + 1)) {
     // push tile value to winDiagChecker
     winDiagChecker.push(gameBoard[y])
     // if winDiagChecker can be reduced to three x or three o,
     // then the player wins.
-    if (winDiagChecker.reduce(accumulator) === 'xxx') {
+    if (winDiagChecker.reduce(accumulator) === playerXWin) {
       console.log('Player X wins')
     }
-    if (winDiagChecker.reduce(accumulator) === 'ooo') {
+    if (winDiagChecker.reduce(accumulator) === playerOWin) {
       console.log('Player O wins')
     }
   }
@@ -133,15 +136,16 @@ const checkForRLDiagWin = function () {
   const accumulator = (acc, val) => acc + val
   const winDiagChecker = []
   // iterate through the array by skipping diagonally left to right
-  for (let y = 0; y < gameBoard.length; y += rowLength - 1) {
+  for (let y = (rowLength - 1); y < gameBoard.length; y += (rowLength - 1)) {
     // push tile value to winDiagChecker
     winDiagChecker.push(gameBoard[y])
+    console.log(winDiagChecker)
     // if winDiagChecker can be reduced to three x or three o,
     // then the player wins.
-    if (winDiagChecker.reduce(accumulator) === 'xxx') {
+    if (winDiagChecker.reduce(accumulator) === playerXWin) {
       console.log('Player X wins')
     }
-    if (winDiagChecker.reduce(accumulator) === 'ooo') {
+    if (winDiagChecker.reduce(accumulator) === playerOWin) {
       console.log('Player O wins')
     }
   }
@@ -151,6 +155,7 @@ const checkForPlayersTie = function () {
   // console.log('checking to see if its over')
   // console.log(playerWin)
   const checkForEmptyTile = val => val !== ''
+  // getting double console logs because check for tie runs the checkForPlayerWin function
   if (!checkForPlayerWin() && gameBoard.every(checkForEmptyTile)) {
     console.log('It\'s a tie!')
   }
