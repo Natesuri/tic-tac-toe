@@ -36,6 +36,11 @@ const checkForOver = function () {
 
 const checkForPlayerWin = function () {
   checkForColumnWin()
+  checkForRowWin()
+  checkForLRDiagWin()
+  checkForRLDiagWin()
+  // console.log(checkForRowWin())
+  // console.log(checkForColumnWin())
 }
 
 // Checks to see if a player has its moveValue in columns
@@ -52,17 +57,91 @@ const checkForColumnWin = function () {
       // push tile value to winColumnChecker
       winColumnChecker.push(gameBoard[y])
       // console.log('y is ' + y)
-      // console.log(winColumnChecker)
+      // console.log('column checker', winColumnChecker)
       // if winColumnChecker can be reduced to three x or three o,
       // then the player wins.
       if (winColumnChecker.reduce(accumulator) === 'xxx') {
         console.log('Player X wins')
+        return true
       }
       if (winColumnChecker.reduce(accumulator) === 'ooo') {
         console.log('Player O wins')
+        return true
       }
     }
+    // console.log('column checker ' + x + ' is ', winColumnChecker)
   }
+}
+
+// Checks to see if a player has its moveValue in valid rows
+const checkForRowWin = function () {
+  const accumulator = (acc, val) => acc + val
+  // iterates through the first index in each row
+  for (let x = 0; x < gameBoard.length; x += Math.sqrt(gameBoard.length)) {
+    // console.log(x)
+    // sets a new variable to represent the starting index
+    let y = x
+    // captures the values of the column
+    const winRowChecker = []
+    // iterate through the columns by skipping row length
+    for (y; y < x + Math.sqrt(gameBoard.length); y++) {
+      // push tile value to winColumnChecker
+      winRowChecker.push(gameBoard[y])
+      // console.log('y is ' + y)
+      // console.log('row checker', winRowChecker)
+      // if winColumnRowChecker can be reduced to three x or three o,
+      // then the player wins.
+      if (winRowChecker.reduce(accumulator) === 'xxx') {
+        console.log('Player X wins')
+      }
+      if (winRowChecker.reduce(accumulator) === 'ooo') {
+        console.log('Player O wins')
+      }
+    }
+    // console.log('row checker ' + x + ' is ', winRowChecker)
+  }
+}
+
+const checkForLRDiagWin = function () {
+  const accumulator = (acc, val) => acc + val
+  const winDiagChecker = []
+  // iterate through the columns by skipping row length
+  for (let y = 0; y < gameBoard.length; y += (Math.sqrt(gameBoard.length) + 1)) {
+    // push tile value to winColumnChecker
+    winDiagChecker.push(gameBoard[y])
+    // console.log('y is ' + y)
+    // console.log('row checker', winRowChecker)
+    // if winColumnRowChecker can be reduced to three x or three o,
+    // then the player wins.
+    if (winDiagChecker.reduce(accumulator) === 'xxx') {
+      console.log('Player X wins')
+    }
+    if (winDiagChecker.reduce(accumulator) === 'ooo') {
+      console.log('Player O wins')
+    }
+  }
+  // console.log('row checker ' + x + ' is ', winRowChecker)
+}
+
+const checkForRLDiagWin = function () {
+  const accumulator = (acc, val) => acc + val
+  const winDiagChecker = []
+  // iterate through the columns by skipping row length
+  for (let y = 0; y < gameBoard.length; y += (Math.sqrt(gameBoard.length) - 1)) {
+    // push tile value to winColumnChecker
+    winDiagChecker.push(gameBoard[y])
+    // console.log('y is ' + y)
+    // console.log('row checker', winRowChecker)
+    // if winColumnRowChecker can be reduced to three x or three o,
+    // then the player wins.
+    if (winDiagChecker.reduce(accumulator) === 'xxx') {
+      console.log('Player X wins')
+    }
+    if (winDiagChecker.reduce(accumulator) === 'ooo') {
+      console.log('Player O wins')
+    }
+  }
+  // console.log('row checker ' + x + ' is ', winRowChecker)
 }
 
 const checkForPlayersTie = function () {
@@ -88,7 +167,7 @@ const onAddMoveValue = function (event) {
       gameBoard[i] = currentPlayer.moveValue
       console.log(gameBoard)
       togglePlayer()
-      console.log(currentPlayer)
+      // console.log(currentPlayer)
       checkForOver()
     }
   }
