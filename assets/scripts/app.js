@@ -11,6 +11,9 @@ const events = require('./game/event.js')
 const boardLength = 9
 
 $(() => {
+  // Later, will load on sign in
   events.initializeBoard(boardLength)
-  $('#1').on('submit', events.onAddX)
+  // later will load on sign in
+  // events.loadStartingPlayer()
+  $('#1').on('submit', events.onAddMoveValue)
 })
