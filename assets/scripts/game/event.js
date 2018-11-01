@@ -4,6 +4,7 @@ let rowLength = null
 
 let playerXWin = null
 let playerOWin = null
+let gameOver = false
 
 // dummy data for testing
 const player_x = {
@@ -50,6 +51,7 @@ const checkForPlayerWin = function () {
   checkForRowWin()
   checkForLRDiagWin()
   checkForRLDiagWin()
+  // if ()
   // console.log('playerXWin is ' + playerXWin)
   // console.log(checkForRowWin())
   // console.log(checkForColumnWin())
@@ -74,11 +76,11 @@ const checkForColumnWin = function () {
       // then the player wins.
       if (winColumnChecker.reduce(accumulator) === playerXWin) {
         console.log('Player X wins')
-        return true
+        gameOver = true
       }
       if (winColumnChecker.reduce(accumulator) === playerOWin) {
         console.log('Player O wins')
-        return true
+        gameOver = true
       }
     }
     // console.log('column checker ' + x + ' is ', winColumnChecker)
@@ -105,9 +107,11 @@ const checkForRowWin = function () {
       // then the player wins.
       if (winRowChecker.reduce(accumulator) === playerXWin) {
         console.log('Player X wins')
+        gameOver = true
       }
       if (winRowChecker.reduce(accumulator) === playerOWin) {
         console.log('Player O wins')
+        gameOver = true
       }
     }
     // console.log('row checker ' + x + ' is ', winRowChecker)
@@ -125,9 +129,11 @@ const checkForLRDiagWin = function () {
     // then the player wins.
     if (winDiagChecker.reduce(accumulator) === playerXWin) {
       console.log('Player X wins')
+      gameOver = true
     }
     if (winDiagChecker.reduce(accumulator) === playerOWin) {
       console.log('Player O wins')
+      gameOver = true
     }
   }
 }
@@ -139,14 +145,16 @@ const checkForRLDiagWin = function () {
   for (let y = (rowLength - 1); y < gameBoard.length; y += (rowLength - 1)) {
     // push tile value to winDiagChecker
     winDiagChecker.push(gameBoard[y])
-    console.log(winDiagChecker)
+    // console.log(winDiagChecker)
     // if winDiagChecker can be reduced to three x or three o,
     // then the player wins.
     if (winDiagChecker.reduce(accumulator) === playerXWin) {
       console.log('Player X wins')
+      gameOver = true
     }
     if (winDiagChecker.reduce(accumulator) === playerOWin) {
       console.log('Player O wins')
+      gameOver = true
     }
   }
 }
@@ -156,8 +164,9 @@ const checkForPlayersTie = function () {
   // console.log(playerWin)
   const checkForEmptyTile = val => val !== ''
   // getting double console logs because check for tie runs the checkForPlayerWin function
-  if (!checkForPlayerWin() && gameBoard.every(checkForEmptyTile)) {
+  if (!gameOver && gameBoard.every(checkForEmptyTile)) {
     console.log('It\'s a tie!')
+    gameOver = true
   }
 }
 
@@ -166,6 +175,10 @@ const onAddMoveValue = function (event) {
   // console.log('you clicked' + event.target.id)
   event.preventDefault()
   // iterate through the gameBoard array
+  if (gameOver) {
+    console.log('Click Play Again')
+    return
+  }
   for (let i = 0; i < gameBoard.length; i++) {
   // turns tile id into a number
     const tileSelected = Number(event.target.id)
