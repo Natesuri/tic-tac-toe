@@ -1,5 +1,7 @@
 const gameBoard = []
 
+let rowLength = null
+
 // dummy data for testing
 const player_x = {
   id: 1,
@@ -26,12 +28,19 @@ const initializeBoard = boardLength => {
   for (let i = 0; i < boardLength; i++) {
     gameBoard.push('')
   }
+  rowLength = Math.sqrt(gameBoard.length)
   return gameBoard
 }
+
+// const playerXWin = player_x.moveValue.repeat(rowLength)
+// const playerOWin = player_o.moveValue.repeat(rowLength)
 
 const checkForOver = function () {
   checkForPlayerWin()
   checkForPlayersTie()
+  // console.log(playerXWin)
+  // console.log(rowLength)
+  // console.log(currentPlayer.moveValue)
 }
 
 const checkForPlayerWin = function () {
@@ -47,13 +56,13 @@ const checkForPlayerWin = function () {
 const checkForColumnWin = function () {
   const accumulator = (acc, val) => acc + val
   // iterates through the indices in the top row
-  for (let x = 0; x < Math.sqrt(gameBoard.length); x++) {
+  for (let x = 0; x < rowLength; x++) {
     // sets a new variable to represent the starting index
     let y = x
     // captures the values of the column
     const winColumnChecker = []
     // iterate through the columns by skipping row length
-    for (y; y < gameBoard.length; y += Math.sqrt(gameBoard.length)) {
+    for (y; y < gameBoard.length; y += rowLength) {
       // push tile value to winColumnChecker
       winColumnChecker.push(gameBoard[y])
       // console.log('y is ' + y)
@@ -77,14 +86,14 @@ const checkForColumnWin = function () {
 const checkForRowWin = function () {
   const accumulator = (acc, val) => acc + val
   // iterates through the first index in each row
-  for (let x = 0; x < gameBoard.length; x += Math.sqrt(gameBoard.length)) {
+  for (let x = 0; x < gameBoard.length; x += rowLength) {
     // console.log(x)
     // sets a new variable to represent the starting index
     let y = x
     // captures the values of the column
     const winRowChecker = []
     // iterate through the columns by skipping row length
-    for (y; y < x + Math.sqrt(gameBoard.length); y++) {
+    for (y; y < x + rowLength; y++) {
       // push tile value to winColumnChecker
       winRowChecker.push(gameBoard[y])
       // console.log('y is ' + y)
@@ -105,13 +114,11 @@ const checkForRowWin = function () {
 const checkForLRDiagWin = function () {
   const accumulator = (acc, val) => acc + val
   const winDiagChecker = []
-  // iterate through the columns by skipping row length
-  for (let y = 0; y < gameBoard.length; y += (Math.sqrt(gameBoard.length) + 1)) {
-    // push tile value to winColumnChecker
+  // iterate through the array by skipping diagonally left to right
+  for (let y = 0; y < gameBoard.length; y += rowLength + 1) {
+    // push tile value to winDiagChecker
     winDiagChecker.push(gameBoard[y])
-    // console.log('y is ' + y)
-    // console.log('row checker', winRowChecker)
-    // if winColumnRowChecker can be reduced to three x or three o,
+    // if winDiagChecker can be reduced to three x or three o,
     // then the player wins.
     if (winDiagChecker.reduce(accumulator) === 'xxx') {
       console.log('Player X wins')
@@ -120,19 +127,16 @@ const checkForLRDiagWin = function () {
       console.log('Player O wins')
     }
   }
-  // console.log('row checker ' + x + ' is ', winRowChecker)
 }
 
 const checkForRLDiagWin = function () {
   const accumulator = (acc, val) => acc + val
   const winDiagChecker = []
-  // iterate through the columns by skipping row length
-  for (let y = 0; y < gameBoard.length; y += (Math.sqrt(gameBoard.length) - 1)) {
-    // push tile value to winColumnChecker
+  // iterate through the array by skipping diagonally left to right
+  for (let y = 0; y < gameBoard.length; y += rowLength - 1) {
+    // push tile value to winDiagChecker
     winDiagChecker.push(gameBoard[y])
-    // console.log('y is ' + y)
-    // console.log('row checker', winRowChecker)
-    // if winColumnRowChecker can be reduced to three x or three o,
+    // if winDiagChecker can be reduced to three x or three o,
     // then the player wins.
     if (winDiagChecker.reduce(accumulator) === 'xxx') {
       console.log('Player X wins')
@@ -141,7 +145,6 @@ const checkForRLDiagWin = function () {
       console.log('Player O wins')
     }
   }
-  // console.log('row checker ' + x + ' is ', winRowChecker)
 }
 
 const checkForPlayersTie = function () {
