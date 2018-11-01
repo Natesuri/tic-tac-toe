@@ -38,36 +38,31 @@ const checkForPlayerWin = function () {
   checkForColumnWin()
 }
 
+// Checks to see if a player has its moveValue in columns
 const checkForColumnWin = function () {
-  const winColumnChecker = []
   const accumulator = (acc, val) => acc + val
-  for (let x = 0; x < gameBoard.length; x += Math.sqrt(gameBoard.length)) {
-    winColumnChecker.push(gameBoard[x])
-    if (winColumnChecker.reduce(accumulator) === 'xxx') {
-      console.log('Player X wins')
-    }
-    if (winColumnChecker.reduce(accumulator) === 'ooo') {
-      console.log('Player O wins')
+  // iterates through the indices in the top row
+  for (let x = 0; x < Math.sqrt(gameBoard.length); x++) {
+    // sets a new variable to represent the starting index
+    let y = x
+    // captures the values of the column
+    const winColumnChecker = []
+    // iterate through the columns by skipping row length
+    for (y; y < gameBoard.length; y += Math.sqrt(gameBoard.length)) {
+      // push tile value to winColumnChecker
+      winColumnChecker.push(gameBoard[y])
+      // console.log('y is ' + y)
+      // console.log(winColumnChecker)
+      // if winColumnChecker can be reduced to three x or three o,
+      // then the player wins.
+      if (winColumnChecker.reduce(accumulator) === 'xxx') {
+        console.log('Player X wins')
+      }
+      if (winColumnChecker.reduce(accumulator) === 'ooo') {
+        console.log('Player O wins')
+      }
     }
   }
-  // for (let x = 1; x < gameBoard.length; x += Math.sqrt(gameBoard.length)) {
-  //   winColumnChecker.push(gameBoard[x])
-  //   if (winColumnChecker.reduce(accumulator) === 'xxx') {
-  //     console.log('Player X wins')
-  //   }
-  //   if (winColumnChecker.reduce(accumulator) === 'ooo') {
-  //     console.log('Player O wins')
-  //   }
-  // }
-  // for (let x = 2; x < gameBoard.length; x += Math.sqrt(gameBoard.length)) {
-  //   winColumnChecker.push(gameBoard[x])
-  //   if (winColumnChecker.reduce(accumulator) === 'xxx') {
-  //     console.log('Player X wins')
-  //   }
-  //   if (winColumnChecker.reduce(accumulator) === 'ooo') {
-  //     console.log('Player O wins')
-  //   }
-  // }
 }
 
 const checkForPlayersTie = function () {
