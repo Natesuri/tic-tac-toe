@@ -28,19 +28,53 @@ const initializeBoard = boardLength => {
   }
   return gameBoard
 }
-console.log(gameBoard)
 
 const checkForOver = function () {
+  checkForPlayerWin()
   checkForPlayersTie()
 }
 
-const checkForPlayerWin = false
+const checkForPlayerWin = function () {
+  checkForColumnWin()
+}
+
+const checkForColumnWin = function () {
+  const winColumnChecker = []
+  const accumulator = (acc, val) => acc + val
+  for (let x = 0; x < gameBoard.length; x += Math.sqrt(gameBoard.length)) {
+    winColumnChecker.push(gameBoard[x])
+    if (winColumnChecker.reduce(accumulator) === 'xxx') {
+      console.log('Player X wins')
+    }
+    if (winColumnChecker.reduce(accumulator) === 'ooo') {
+      console.log('Player O wins')
+    }
+  }
+  // for (let x = 1; x < gameBoard.length; x += Math.sqrt(gameBoard.length)) {
+  //   winColumnChecker.push(gameBoard[x])
+  //   if (winColumnChecker.reduce(accumulator) === 'xxx') {
+  //     console.log('Player X wins')
+  //   }
+  //   if (winColumnChecker.reduce(accumulator) === 'ooo') {
+  //     console.log('Player O wins')
+  //   }
+  // }
+  // for (let x = 2; x < gameBoard.length; x += Math.sqrt(gameBoard.length)) {
+  //   winColumnChecker.push(gameBoard[x])
+  //   if (winColumnChecker.reduce(accumulator) === 'xxx') {
+  //     console.log('Player X wins')
+  //   }
+  //   if (winColumnChecker.reduce(accumulator) === 'ooo') {
+  //     console.log('Player O wins')
+  //   }
+  // }
+}
 
 const checkForPlayersTie = function () {
   // console.log('checking to see if its over')
   // console.log(playerWin)
   const checkForEmptyTile = val => val !== ''
-  if (!checkForPlayerWin && gameBoard.every(checkForEmptyTile)) {
+  if (!checkForPlayerWin() && gameBoard.every(checkForEmptyTile)) {
     console.log('It\'s a tie!')
   }
 }
@@ -51,11 +85,11 @@ const onAddMoveValue = function (event) {
   event.preventDefault()
   // iterate through the gameBoard array
   for (let i = 0; i < gameBoard.length; i++) {
-    // turns tile id into a number
+  // turns tile id into a number
     const tileSelected = Number(event.target.id)
     // compares tile id to the current iteration
     if (i === tileSelected && gameBoard[i] === '') {
-      // adds the player's value to the array at the index of the selected tile
+    // adds the player's value to the array at the index of the selected tile
       gameBoard[i] = currentPlayer.moveValue
       console.log(gameBoard)
       togglePlayer()
