@@ -19,10 +19,17 @@ const clearErrorMessage = function () {
 const gameOverErrorMessage = function () {
   $('#errorMessage').html(`<h5>Click button to play again!</h5>`)
 }
+
+const announceWinner = function (currentPlayer) {
+  // console.log(`${currentPlayer.name} Wins!`)
+  $('#message').html(`<h4> ${currentPlayer.name} Wins!</h4>`)
+}
+
 module.exports = {
   addPlayerMoveValue,
   displayCurrentPlayer,
   askForValidMove,
   clearErrorMessage,
-  gameOverErrorMessage
+  gameOverErrorMessage,
+  announceWinner
 }

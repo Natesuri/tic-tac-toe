@@ -83,6 +83,7 @@ const checkForColumnWin = function () {
       if (winColumnChecker.reduce(accumulator) === playerXWin || winColumnChecker.reduce(accumulator) === playerOWin) {
         console.log(`${currentPlayer.name} wins`)
         gameOver = true
+        ui.announceWinner(currentPlayer)
       }
     }
     // console.log('column checker ' + x + ' is ', winColumnChecker)
@@ -110,6 +111,7 @@ const checkForRowWin = function () {
       if (winRowChecker.reduce(accumulator) === playerXWin || winRowChecker.reduce(accumulator) === playerOWin) {
         console.log(`${currentPlayer.name} wins`)
         gameOver = true
+        ui.announceWinner(currentPlayer)
       }
     }
     // console.log('row checker ' + x + ' is ', winRowChecker)
@@ -128,6 +130,7 @@ const checkForLRDiagWin = function () {
     if (winDiagChecker.reduce(accumulator) === playerXWin || winDiagChecker.reduce(accumulator) === playerOWin) {
       console.log(`${currentPlayer.name} wins`)
       gameOver = true
+      ui.announceWinner(currentPlayer)
     }
   }
 }
@@ -145,6 +148,7 @@ const checkForRLDiagWin = function () {
     if (winDiagChecker.reduce(accumulator) === playerXWin || winDiagChecker.reduce(accumulator) === playerOWin) {
       console.log(`${currentPlayer.name} wins`)
       gameOver = true
+      ui.announceWinner(currentPlayer)
     }
   }
 }
@@ -157,6 +161,7 @@ const checkForPlayersTie = function () {
   if (!gameOver && gameBoard.every(checkForEmptyTile)) {
     console.log('It\'s a tie!')
     gameOver = true
+    ui.announceWinner(currentPlayer)
   }
 }
 
@@ -185,7 +190,9 @@ const onAddMoveValue = function (event) {
       console.log(gameBoard)
       // console.log(currentPlayer)
       checkForOver()
-      togglePlayer()
+      if (!gameOver) {
+        togglePlayer()
+      }
     }
   }
 }
