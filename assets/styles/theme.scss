@@ -1,7 +1,32 @@
 $tile-width: 200px;
 $tile-height: $tile-width;
 
-body {
+.pageTitle {
+  margin: 10px auto;
+  width: $tile-width;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+}
+
+.messageBox {
+  flex-flow: column;
+  width: $tile-width;
+}
+
+.userBox {
+  flex-flow: column;
+  width: $tile-width;
+}
+
+.rightContent {
+  justify-content: flex-end;
+}
+
+.leftContent {
+  justify-content: flex-start;
 }
 
 .board {
