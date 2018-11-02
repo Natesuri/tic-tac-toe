@@ -10,12 +10,14 @@ let gameOver = false
 
 // dummy data for testing
 const player_x = {
+  name: 'Player X',
   id: 1,
   email: 'me@email.com',
   moveValue: 'x'
 }
 
 const player_o = {
+  name: 'Player O',
   id: 2,
   email: 'you@email.com',
   moveValue: 'o'
@@ -28,6 +30,7 @@ let currentPlayer = player_x
 const togglePlayer = function () {
   // ternary if statement to see who is the currentPlayer and toggle accordingly
   currentPlayer === player_x ? currentPlayer = player_o : currentPlayer = player_x
+  ui.displayCurrentPlayer(currentPlayer)
 }
 
 const initializeBoard = boardLength => {
@@ -37,6 +40,7 @@ const initializeBoard = boardLength => {
   rowLength = Math.sqrt(gameBoard.length)
   playerXWin = player_x.moveValue.repeat(rowLength)
   playerOWin = player_o.moveValue.repeat(rowLength)
+  // ui.displayCurrentPlayer(currentPlayer)
   return gameBoard
 }
 
@@ -76,12 +80,8 @@ const checkForColumnWin = function () {
       // console.log('column checker', winColumnChecker)
       // if winColumnChecker can be reduced to three x or three o,
       // then the player wins.
-      if (winColumnChecker.reduce(accumulator) === playerXWin) {
-        console.log('Player X wins')
-        gameOver = true
-      }
-      if (winColumnChecker.reduce(accumulator) === playerOWin) {
-        console.log('Player O wins')
+      if (winColumnChecker.reduce(accumulator) === playerXWin || winColumnChecker.reduce(accumulator) === playerOWin) {
+        console.log(`${currentPlayer.name} wins`)
         gameOver = true
       }
     }
@@ -107,12 +107,8 @@ const checkForRowWin = function () {
       // console.log('row checker', winRowChecker)
       // if winColumnRowChecker can be reduced to three x or three o,
       // then the player wins.
-      if (winRowChecker.reduce(accumulator) === playerXWin) {
-        console.log('Player X wins')
-        gameOver = true
-      }
-      if (winRowChecker.reduce(accumulator) === playerOWin) {
-        console.log('Player O wins')
+      if (winRowChecker.reduce(accumulator) === playerXWin || winRowChecker.reduce(accumulator) === playerOWin) {
+        console.log(`${currentPlayer.name} wins`)
         gameOver = true
       }
     }
@@ -129,12 +125,8 @@ const checkForLRDiagWin = function () {
     winDiagChecker.push(gameBoard[y])
     // if winDiagChecker can be reduced to three x or three o,
     // then the player wins.
-    if (winDiagChecker.reduce(accumulator) === playerXWin) {
-      console.log('Player X wins')
-      gameOver = true
-    }
-    if (winDiagChecker.reduce(accumulator) === playerOWin) {
-      console.log('Player O wins')
+    if (winDiagChecker.reduce(accumulator) === playerXWin || winDiagChecker.reduce(accumulator) === playerOWin) {
+      console.log(`${currentPlayer.name} wins`)
       gameOver = true
     }
   }
@@ -150,12 +142,8 @@ const checkForRLDiagWin = function () {
     // console.log(winDiagChecker)
     // if winDiagChecker can be reduced to three x or three o,
     // then the player wins.
-    if (winDiagChecker.reduce(accumulator) === playerXWin) {
-      console.log('Player X wins')
-      gameOver = true
-    }
-    if (winDiagChecker.reduce(accumulator) === playerOWin) {
-      console.log('Player O wins')
+    if (winDiagChecker.reduce(accumulator) === playerXWin || winDiagChecker.reduce(accumulator) === playerOWin) {
+      console.log(`${currentPlayer.name} wins`)
       gameOver = true
     }
   }
@@ -190,9 +178,9 @@ const onAddMoveValue = function (event) {
       gameBoard[i] = currentPlayer.moveValue
       ui.addPlayerMoveValue(currentPlayer)
       console.log(gameBoard)
-      togglePlayer()
       // console.log(currentPlayer)
       checkForOver()
+      togglePlayer()
     }
   }
 }
