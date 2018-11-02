@@ -163,15 +163,20 @@ const checkForPlayersTie = function () {
 // button that is simulating a click on a given tile
 const onAddMoveValue = function (event) {
   // console.log('you clicked' + event.target.id)
-  event.preventDefault()
-  // iterate through the gameBoard array
+  ui.clearErrorMessage()
   if (gameOver) {
-    console.log('Click Play Again')
+    ui.gameOverErrorMessage()
     return
   }
+  // iterate through the gameBoard array
   for (let i = 0; i < gameBoard.length; i++) {
   // turns tile id into a number
     const tileSelected = Number(event.target.id)
+    // compares tile id to the current iteration. If tile has already been selected,
+    // ask for a valid move
+    if (i === tileSelected && gameBoard[i] !== '') {
+      ui.askForValidMove()
+    }
     // compares tile id to the current iteration
     if (i === tileSelected && gameBoard[i] === '') {
     // adds the player's value to the array at the index of the selected tile
