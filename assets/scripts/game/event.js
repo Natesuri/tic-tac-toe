@@ -161,7 +161,7 @@ const checkForPlayersTie = function () {
   if (!gameOver && gameBoard.every(checkForEmptyTile)) {
     console.log('It\'s a tie!')
     gameOver = true
-    ui.announceWinner(currentPlayer)
+    ui.announceTie()
   }
 }
 

@@ -25,11 +25,16 @@ const announceWinner = function (currentPlayer) {
   $('#message').html(`<h4> ${currentPlayer.name} Wins!</h4>`)
 }
 
+const announceTie = function () {
+  $('#message').html(`<h4>Tie Game!</h4>`)
+}
+
 module.exports = {
   addPlayerMoveValue,
   displayCurrentPlayer,
   askForValidMove,
   clearErrorMessage,
   gameOverErrorMessage,
-  announceWinner
+  announceWinner,
+  announceTie
 }
