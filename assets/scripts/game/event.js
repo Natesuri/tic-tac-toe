@@ -1,3 +1,5 @@
+const ui = require('./ui.js')
+
 const gameBoard = []
 
 let rowLength = null
@@ -186,6 +188,7 @@ const onAddMoveValue = function (event) {
     if (i === tileSelected && gameBoard[i] === '') {
     // adds the player's value to the array at the index of the selected tile
       gameBoard[i] = currentPlayer.moveValue
+      ui.addPlayerMoveValue(currentPlayer)
       console.log(gameBoard)
       togglePlayer()
       // console.log(currentPlayer)
