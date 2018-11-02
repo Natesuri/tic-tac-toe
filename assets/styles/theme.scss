@@ -6,6 +6,10 @@ $tile-height: $tile-width;
   width: $tile-width;
 }
 
+.forms {
+  background: $board-background;
+}
+
 main {
   display: flex;
   justify-content: space-around;
