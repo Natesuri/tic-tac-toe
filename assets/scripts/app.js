@@ -11,6 +11,7 @@ const events = require('./game/event.js')
 const boardLength = 9
 
 $(() => {
+  $('#sign-up').on('submit', events.onSignUp)
   // Later, will load on sign in
   events.initializeBoard(boardLength)
   // later will load on sign in
