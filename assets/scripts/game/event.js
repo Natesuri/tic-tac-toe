@@ -1,7 +1,4 @@
-const getFormFields = require('../../../lib/get-form-fields.js')
-
 const ui = require('./ui.js')
-const authApi = require('../auth/api.js')
 
 const gameBoard = []
 
@@ -45,13 +42,6 @@ const initializeBoard = boardLength => {
   playerOWin = player_o.moveValue.repeat(rowLength)
   // ui.displayCurrentPlayer(currentPlayer)
   return gameBoard
-}
-
-const onSignUp = event => {
-  event.preventDefault()
-  console.log(event)
-  const data = getFormFields(event.target)
-  authApi.signUp(data)
 }
 
 const checkForOver = function () {
@@ -210,7 +200,6 @@ const onAddMoveValue = function (event) {
 module.exports = {
   initializeBoard,
   onAddMoveValue,
-  onSignUp
 }
 
 // Addtional resources:
