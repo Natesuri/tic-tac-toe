@@ -18,11 +18,16 @@ const signInSuccess = data => {
   $('#user').text('Sign in Succesful')
   console.log('signInSuccess ran. Data is:', data)
   userStore.user = data
-  console.log(userStore.user)
+}
+
+const signOutSuccess = function () {
+  $('#user').text('Sign Out Succesful')
+  userStore.user = {}
 }
 
 module.exports = {
   signUpSuccess,
   signUpFailure,
-  signInSuccess
+  signInSuccess,
+  signOutSuccess
 }

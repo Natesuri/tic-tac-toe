@@ -22,7 +22,16 @@ const onSignIn = event => {
     .catch()
 }
 
+const onSignOut = event => {
+  console.log('hello!')
+  event.preventDefault()
+  authApi.signOut()
+    .then(authUi.signOutSuccess)
+    .catch()
+}
+
 module.exports = {
   onSignUp,
-  onSignIn
+  onSignIn,
+  onSignOut
 }
