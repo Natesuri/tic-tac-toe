@@ -25,9 +25,15 @@ const signOutSuccess = function () {
   userStore.user = {}
 }
 
+const changePasswordSuccess = function (data) {
+  $('#user').text('Change Password Successful')
+  console.log('changePasswordSuccess ran. Data is:', data)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
-  signOutSuccess
+  signOutSuccess,
+  changePasswordSuccess
 }

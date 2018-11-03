@@ -23,15 +23,23 @@ const onSignIn = event => {
 }
 
 const onSignOut = event => {
-  console.log('hello!')
   event.preventDefault()
   authApi.signOut()
     .then(authUi.signOutSuccess)
     .catch()
 }
 
+const onChangePassword = event => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  authApi.changePassword(data)
+    .then(authUi.changePasswordSuccess)
+    .catch()
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
-  onSignOut
+  onSignOut,
+  onChangePassword
 }
