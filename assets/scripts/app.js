@@ -12,6 +12,7 @@ const boardLength = 9
 
 $(() => {
   $('#sign-up').on('submit', authEvents.onSignUp)
+  $('#sign-in').on('submit', authEvents.onSignIn)
   // Later, will load on sign in
   events.initializeBoard(boardLength)
   // later will load on sign in

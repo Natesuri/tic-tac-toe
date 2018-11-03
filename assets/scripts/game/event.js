@@ -199,7 +199,7 @@ const onAddMoveValue = function (event) {
 
 module.exports = {
   initializeBoard,
-  onAddMoveValue,
+  onAddMoveValue
 }
 
 // Addtional resources:
