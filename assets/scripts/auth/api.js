@@ -23,20 +23,20 @@ const signIn = function (data) {
 }
 
 const signOut = function () {
-  console.log(userStore.user.user.token)
+  const userToken = userStore.user.user.token
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
-    headers: {Authorization: `Token token=${userStore.user.user.token}`}
+    headers: {Authorization: `Token token=${userToken}`}
   })
 }
 
 const changePassword = function (data) {
-  console.log(userStore.user.user.token)
+  const userToken = userStore.user.user.token
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
-    headers: {Authorization: `Token token=${userStore.user.user.token}`},
+    headers: {Authorization: `Token token=${userToken}`},
     data: data
   })
 }

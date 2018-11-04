@@ -19,14 +19,14 @@ const onSignIn = event => {
   const data = getFormFields(event.target)
   authApi.signIn(data)
     .then(authUi.signInSuccess)
-    .catch()
+    .catch(authUi.signInFailure)
 }
 
 const onSignOut = event => {
   event.preventDefault()
   authApi.signOut()
     .then(authUi.signOutSuccess)
-    .catch()
+    .catch(authUi.signOutFailure)
 }
 
 const onChangePassword = event => {
@@ -34,7 +34,7 @@ const onChangePassword = event => {
   const data = getFormFields(event.target)
   authApi.changePassword(data)
     .then(authUi.changePasswordSuccess)
-    .catch()
+    .catch(authUi.changePasswordFailure)
 }
 
 module.exports = {

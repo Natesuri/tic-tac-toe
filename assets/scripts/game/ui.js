@@ -13,7 +13,7 @@ const askForValidMove = function () {
 }
 
 const clearErrorMessage = function () {
-  $('#errorMessage').html(`<h3></h3>`)
+  $('#errorMessage').html(`<h5></h5>`)
 }
 
 const gameOverErrorMessage = function () {
