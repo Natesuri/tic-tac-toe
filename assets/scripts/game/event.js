@@ -9,14 +9,14 @@ let playerOWin = null
 let gameOver = false
 
 // dummy data for testing
-const player_x = {
+const playerX = {
   name: 'Player X',
   id: 1,
   email: 'me@email.com',
   moveValue: 'x'
 }
 
-const player_o = {
+const playerO = {
   name: 'Player O',
   id: 2,
   email: 'you@email.com',
@@ -24,12 +24,12 @@ const player_o = {
 }
 
 // defining current player on page load
-let currentPlayer = player_x
+let currentPlayer = playerX
 
 // toggles players from player_x to player_o or vice versa
 const togglePlayer = function () {
   // ternary if statement to see who is the currentPlayer and toggle accordingly
-  currentPlayer === player_x ? currentPlayer = player_o : currentPlayer = player_x
+  currentPlayer === playerX ? currentPlayer = playerO : currentPlayer = playerX
   ui.displayCurrentPlayer(currentPlayer)
 }
 
@@ -38,8 +38,8 @@ const initializeBoard = boardLength => {
     gameBoard.push('')
   }
   rowLength = Math.sqrt(gameBoard.length)
-  playerXWin = player_x.moveValue.repeat(rowLength)
-  playerOWin = player_o.moveValue.repeat(rowLength)
+  playerXWin = playerX.moveValue.repeat(rowLength)
+  playerOWin = playerO.moveValue.repeat(rowLength)
   // ui.displayCurrentPlayer(currentPlayer)
   return gameBoard
 }

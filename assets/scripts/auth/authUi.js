@@ -1,4 +1,6 @@
 const userStore = require('../userStore.js')
+const gameApi = require('../game/api.js')
+const gameUi = require('../game/ui.js')
 
 const clearUserErrorMessage = function () {
   $('#userAltMessage').html(`<h5></h5>`)
@@ -9,6 +11,8 @@ const hideShowAuth = function () {
   $('#sign-in').toggleClass('hidden')
   $('#sign-out').toggleClass('hidden')
   $('#change-password').toggleClass('hidden')
+  $('#board').toggleClass('hidden')
+  $('#game-message').toggleClass('hidden')
 }
 
 const signUpSuccess = apiData => {
@@ -33,6 +37,10 @@ const signInSuccess = apiData => {
   $('#user').html(`<h4>Welcome ${userName}</h4>`)
   clearUserErrorMessage()
   hideShowAuth()
+  gameApi.createGame()
+    .then(gameUi.saveGame)
+    .catch()
+
   // console.log('signInSuccess ran. Data is:', apiData)
 }
 

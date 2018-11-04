@@ -1,6 +1,10 @@
 $tile-width: 200px;
 $tile-height: $tile-width;
 
+.center {
+  margin: 0 auto;
+}
+
 .hidden {
   display: none;
 }

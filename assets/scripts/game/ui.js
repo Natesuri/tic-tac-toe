@@ -1,3 +1,5 @@
+const gameStore = require('../gameStore.js')
+
 const addPlayerMoveValue = function (currentPlayer) {
   const clickedId = event.target.id
   $('#' + clickedId).append(currentPlayer.moveValue)
@@ -29,6 +31,12 @@ const announceTie = function () {
   $('#message').html(`<h4>Tie Game!</h4>`)
 }
 
+const saveGame = function (data) {
+  console.log(data)
+  gameStore.game = data
+  console.log(gameStore.game)
+}
+
 module.exports = {
   addPlayerMoveValue,
   displayCurrentPlayer,
@@ -36,5 +44,6 @@ module.exports = {
   clearErrorMessage,
   gameOverErrorMessage,
   announceWinner,
-  announceTie
+  announceTie,
+  saveGame
 }
