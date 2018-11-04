@@ -13,10 +13,9 @@ const hideShowAuth = function () {
 
 const signUpSuccess = apiData => {
   userStore.user = apiData
-  const userName = userStore.user.user.email
-  $('#user').html(`<h4>Welcome ${userName}</h4>`)
+  $('#user').html(`<h4>Sign Up succesful.</h4><h5>Please Sign in Above.</h5>`)
   clearUserErrorMessage()
-  hideShowAuth()
+  // hideShowAuth()
   // console.log('signUpSuccess ran. Data is:', apiData)
   // $('#message').removeClass()
   // $('#message').addClass('success border')
@@ -31,7 +30,7 @@ const signUpFailure = apiData => {
 const signInSuccess = apiData => {
   userStore.user = apiData
   const userName = userStore.user.user.email
-  $('#user').html(`<h4>Welcome back ${userName}</h4>`)
+  $('#user').html(`<h4>Welcome ${userName}</h4>`)
   clearUserErrorMessage()
   hideShowAuth()
   // console.log('signInSuccess ran. Data is:', apiData)
