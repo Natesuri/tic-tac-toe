@@ -18,8 +18,6 @@ const signIn = function (data) {
     method: 'POST',
     data: data
   })
-  // userStore.user = data
-  // console.log(userStore.user)
 }
 
 const signOut = function () {

@@ -11,12 +11,15 @@ const onSignUp = event => {
   authApi.signUp(data)
     .then(authUi.signUpSuccess)
     .catch(authUi.signUpFailure)
+  // onSignIn() need to get this to run only after the sign up is successful.
+  // .then() is asyncronous, so it doesn't work as currently arranged.
 }
 
 const onSignIn = event => {
   event.preventDefault()
   console.log(event)
   const data = getFormFields(event.target)
+  console.log(data)
   authApi.signIn(data)
     .then(authUi.signInSuccess)
     .catch(authUi.signInFailure)

@@ -4,11 +4,19 @@ const clearUserErrorMessage = function () {
   $('#userAltMessage').html(`<h5></h5>`)
 }
 
+const hideShowAuth = function () {
+  $('#sign-up').toggleClass('hidden')
+  $('#sign-in').toggleClass('hidden')
+  $('#sign-out').toggleClass('hidden')
+  $('#change-password').toggleClass('hidden')
+}
+
 const signUpSuccess = apiData => {
   userStore.user = apiData
   const userName = userStore.user.user.email
   $('#user').html(`<h4>Welcome ${userName}</h4>`)
   clearUserErrorMessage()
+  hideShowAuth()
   // console.log('signUpSuccess ran. Data is:', apiData)
   // $('#message').removeClass()
   // $('#message').addClass('success border')
@@ -25,6 +33,7 @@ const signInSuccess = apiData => {
   const userName = userStore.user.user.email
   $('#user').html(`<h4>Welcome back ${userName}</h4>`)
   clearUserErrorMessage()
+  hideShowAuth()
   // console.log('signInSuccess ran. Data is:', apiData)
 }
 
@@ -37,6 +46,7 @@ const signInFailure = apiData => {
 const signOutSuccess = function (apiData) {
   $('#user').html(`<h4>Sign Out Succesful</h4>`)
   clearUserErrorMessage()
+  hideShowAuth()
   // console.log('signOutSuccess ran. Data is:', apiData)
   userStore.user = {}
 }

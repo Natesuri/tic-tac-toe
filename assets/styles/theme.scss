@@ -1,6 +1,10 @@
 $tile-width: 200px;
 $tile-height: $tile-width;
 
+.hidden {
+  display: none;
+}
+
 .pageTitle {
   margin: 10px auto;
   width: $tile-width;
