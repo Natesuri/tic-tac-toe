@@ -1,4 +1,5 @@
 const ui = require('./ui.js')
+const gameApi = require('./api.js')
 
 const gameBoard = []
 
@@ -190,6 +191,8 @@ const onAddMoveValue = function (event) {
       console.log(gameBoard)
       // console.log(currentPlayer)
       checkForOver()
+      gameApi.updateGame(currentPlayer, gameOver, tileSelected)
+        .then(console.log)
       if (!gameOver) {
         togglePlayer()
       }

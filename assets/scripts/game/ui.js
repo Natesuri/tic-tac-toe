@@ -32,7 +32,7 @@ const announceTie = function () {
 }
 
 const saveGame = function (data) {
-  console.log(data)
+  // console.log(data)
   gameStore.game = data
   console.log(gameStore.game)
 }
