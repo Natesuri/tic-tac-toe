@@ -30,6 +30,7 @@ const announceWinner = function (currentPlayer) {
 
 const announceTie = function () {
   $('#message').html(`<h4>Tie Game!</h4>`)
+  hideShowNewGame()
 }
 
 const saveGame = function (data) {
