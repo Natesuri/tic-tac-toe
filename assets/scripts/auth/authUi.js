@@ -56,6 +56,11 @@ const signOutSuccess = function (apiData) {
   if (!$('#start-game').hasClass('hidden')) {
     $('#start-game').toggleClass('hidden')
   }
+  if (!$('#board').hasClass('hidden')) {
+    $('#board').toggleClass('hidden')
+  }
+  $('#message').html('')
+
   // console.log('signOutSuccess ran. Data is:', apiData)
   userStore.user = {}
 }
