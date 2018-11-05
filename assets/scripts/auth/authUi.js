@@ -11,7 +11,7 @@ const hideShowAuth = function () {
   $('#sign-in').toggleClass('hidden')
   $('#sign-out').toggleClass('hidden')
   $('#change-password').toggleClass('hidden')
-  $('#game-history').toggleClass('hidden')
+  $('#get-history').toggleClass('hidden')
 }
 
 const signUpSuccess = apiData => {

@@ -29,18 +29,18 @@ const updateGame = function (currentPlayer, gameOver, tileSelected) {
     headers: {Authorization: `Token token=${userToken}`}
   })
 }
-//
-// const getGameHistory = function () {
-//   const userToken = userStore.user.user.token
-//   return $.ajax({
-//     url: config.apiUrl + '/games',
-//     method: 'GET',
-//     headers: {Authorization: `Token token=${userToken}`}
-//   })
-// }
+
+const getGameHistory = function () {
+  const userToken = userStore.user.user.token
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {Authorization: `Token token=${userToken}`}
+  })
+}
 
 module.exports = {
   createGame,
-  updateGame
-  // getGameHistory
+  updateGame,
+  getGameHistory
 }

@@ -53,10 +53,32 @@
               <h4>Please Sign In</h4>
             </div>
             <div id='userAltMessage' class='user'></div>
+
+            <div class='modal fade' id='history-modal'>
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Game History</h5>
+                    <button type="button" class="close dismiss" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&otimes;</span>
+                    </button>
+                  </div>
+                  <div id='user-history' class="modal-body">
+                    Here is your game history
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div id='userStats' class='hidden'>
+            </div> -->
           </div>
           <input id='start-game' type='button' value='Start New Game' class='hidden'>
           <!-- <input id='play-again' type='button' value='Start New Game' class='hidden'> -->
-          <!-- <input id='get-history' type='button' value='Get Game History' class='hidden'> -->
+          <input id='get-history' type='button' data-toggle='modal' data-target='#history-modal' value='Get Game History' class='hidden'>
         </div>
         <div id='board' class='board hidden'>
           <div class='row'>

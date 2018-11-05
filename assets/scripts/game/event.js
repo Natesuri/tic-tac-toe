@@ -204,10 +204,10 @@ const onAddMoveValue = function (event) {
   }
 }
 
-// const onGetGameHistory = function () {
-//   gameApi.getGameHistory()
-//     .then(ui.displayGameHistory)
-// }
+const onGetGameHistory = function () {
+  gameApi.getGameHistory()
+    .then(ui.displayGameHistory)
+}
 
 const onStartGame = function () {
   gameApi.createGame()
@@ -220,11 +220,16 @@ const onStartGame = function () {
   }
 }
 
+const clearUserHistory = function () {
+  $('#user-history').html('')
+}
+
 module.exports = {
   initializeBoard,
   onAddMoveValue,
-  // onGetGameHistory,
-  onStartGame
+  onGetGameHistory,
+  onStartGame,
+  clearUserHistory
 }
 
 // Addtional resources:

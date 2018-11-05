@@ -15,6 +15,7 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#start-game').on('click', events.onStartGame)
   // $('#play-again').on('click', events.onStartGame)
-  // $('#get-history').on('click', events.onGetGameHistory)
+  $('#get-history').on('click', events.onGetGameHistory)
   $('.tile').on('click', events.onAddMoveValue)
+  $('.dismiss').on('click', events.clearUserHistory)
 })

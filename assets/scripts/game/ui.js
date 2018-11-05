@@ -38,9 +38,41 @@ const saveGame = function (data) {
   // console.log(gameStore.game)
 }
 
-// const displayGameHistory = function (data) {
-//   console.log(data)
-// }
+const displayGameHistory = function (data) {
+  // console.log(data)
+  for (const i in data.games) {
+    // console.log('made it here')
+    const twoDGame = []
+    const oldGame = data.games[i].cells
+    // console.log(oldGame)
+    const fixStrings = function (val) {
+      // console.log(typeof val)
+      // console.log(val)
+      if (val === '') { val = '[]' }
+      gameDisplay.push(val)
+    }
+    const gameDisplay = []
+    oldGame.forEach(fixStrings)
+    // console.log(oldGame)
+    for (let x = 0; x < gameDisplay.length; x += Math.sqrt(gameDisplay.length)) {
+      const newRow = gameDisplay.slice(x, x + Math.sqrt(gameDisplay.length))
+      // console.log(newRow)
+      twoDGame.push(newRow)
+      // console.log(twoDGame)
+      // data.game[i].cells[x]
+    }
+    const rowZero = twoDGame[0]
+    const rowOne = twoDGame[1]
+    const rowTwo = twoDGame[2]
+    $('#user-history').append(`<p>Game ID: ${data.games[i].id}</p>
+      <div>Game Board:
+        <p>${rowZero}</p>
+        <p>${rowOne}</p>
+        <p>${rowTwo}</p>
+      </div>
+      <p> Game Finished: ${data.games[i].over}</p>`)
+  }
+}
 
 const hideShowBoard = function () {
   $('#board').toggleClass('hidden')
@@ -64,7 +96,7 @@ module.exports = {
   announceWinner,
   announceTie,
   saveGame,
-  // displayGameHistory,
+  displayGameHistory,
   hideShowBoard,
   hideShowNewGame
   // hideShowPlayAgain
