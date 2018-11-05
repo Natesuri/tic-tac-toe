@@ -11,15 +11,14 @@ const hideShowAuth = function () {
   $('#sign-in').toggleClass('hidden')
   $('#sign-out').toggleClass('hidden')
   $('#change-password').toggleClass('hidden')
-  $('#game-message').toggleClass('hidden')
   $('#game-history').toggleClass('hidden')
-  $('#start-game').toggleClass('hidden')
 }
 
 const signUpSuccess = apiData => {
   userStore.user = apiData
   $('#user').html(`<h4>Sign Up succesful.</h4><h5>Please Sign in Above.</h5>`)
   clearUserErrorMessage()
+  $('.sign-up-form').val('')
   // hideShowAuth()
   // console.log('signUpSuccess ran. Data is:', apiData)
   // $('#message').removeClass()
@@ -36,8 +35,10 @@ const signInSuccess = apiData => {
   userStore.user = apiData
   const userName = userStore.user.user.email
   $('#user').html(`<h4>Welcome ${userName}</h4>`)
+  $('#start-game').toggleClass('hidden')
   clearUserErrorMessage()
   hideShowAuth()
+  $('.sign-in-form').val('')
   // console.log('signInSuccess ran. Data is:', apiData)
 }
 
@@ -52,6 +53,9 @@ const signOutSuccess = function (apiData) {
   clearUserErrorMessage()
   hideShowAuth()
   gameUi.hideShowBoard()
+  if (!$('#start-game').hasClass('hidden')) {
+    $('#start-game').toggleClass('hidden')
+  }
   // console.log('signOutSuccess ran. Data is:', apiData)
   userStore.user = {}
 }
@@ -65,11 +69,13 @@ const signOutFailure = function (apiData) {
 
 const changePasswordSuccess = function (apiData) {
   $('#userAltMessage').html(`<h5>Change Password Successful</h5>`)
+  $('.pass-form').val('')
   // console.log('changePasswordSuccess ran. Data is:', apiData)
 }
 
 const changePasswordFailure = function (apiData) {
   $('#userAltMessage').html(`<h5>Change password failed ${apiData.statusText}</h5>`)
+  $('.pass-form').val('')
 }
 
 module.exports = {

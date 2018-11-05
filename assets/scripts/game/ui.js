@@ -44,6 +44,7 @@ const saveGame = function (data) {
 
 const hideShowBoard = function () {
   $('#board').toggleClass('hidden')
+  $('#game-message').toggleClass('hidden')
 }
 
 const hideShowNewGame = function () {
