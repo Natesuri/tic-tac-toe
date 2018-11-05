@@ -1,7 +1,9 @@
 const ui = require('./ui.js')
 const gameApi = require('./api.js')
 
-const gameBoard = []
+let gameBoard = []
+
+const boardLength = 9
 
 let rowLength = null
 
@@ -12,20 +14,15 @@ let gameOver = false
 // dummy data for testing
 const playerX = {
   name: 'Player X',
-  id: 1,
-  email: 'me@email.com',
   moveValue: 'x'
 }
 
 const playerO = {
   name: 'Player O',
-  id: 2,
-  email: 'you@email.com',
   moveValue: 'o'
 }
 
-// defining current player on page load
-let currentPlayer = playerX
+let currentPlayer
 
 // toggles players from player_x to player_o or vice versa
 const togglePlayer = function () {
@@ -35,12 +32,19 @@ const togglePlayer = function () {
 }
 
 const initializeBoard = boardLength => {
+  // resetting board on restart
+  gameBoard = []
+  // defining current player on start game
+  currentPlayer = playerX
+  $('.tile').text('')
+  $('#message').html(`<h4> It's ${currentPlayer.name}'s turn </h4>`)
   for (let i = 0; i < boardLength; i++) {
     gameBoard.push('')
   }
   rowLength = Math.sqrt(gameBoard.length)
   playerXWin = playerX.moveValue.repeat(rowLength)
   playerOWin = playerO.moveValue.repeat(rowLength)
+  gameOver = false
   // ui.displayCurrentPlayer(currentPlayer)
   return gameBoard
 }
@@ -192,7 +196,7 @@ const onAddMoveValue = function (event) {
       // console.log(currentPlayer)
       checkForOver()
       gameApi.updateGame(currentPlayer, gameOver, tileSelected)
-        .then(console.log)
+      // .then(ui.saveGame)
       if (!gameOver) {
         togglePlayer()
       }
@@ -200,9 +204,27 @@ const onAddMoveValue = function (event) {
   }
 }
 
+// const onGetGameHistory = function () {
+//   gameApi.getGameHistory()
+//     .then(ui.displayGameHistory)
+// }
+
+const onStartGame = function () {
+  gameApi.createGame()
+    .then(ui.saveGame)
+    .then(ui.hideShowNewGame)
+    .then(initializeBoard(boardLength))
+  // console.log(gameBoard)
+  if ($('#board').hasClass('hidden')) {
+    ui.hideShowBoard()
+  }
+}
+
 module.exports = {
   initializeBoard,
-  onAddMoveValue
+  onAddMoveValue,
+  // onGetGameHistory,
+  onStartGame
 }
 
 // Addtional resources:
