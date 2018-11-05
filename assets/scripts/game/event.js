@@ -133,7 +133,7 @@ const checkForLRDiagWin = function () {
     // if winDiagChecker can be reduced to three x or three o,
     // then the player wins.
     if (winDiagChecker.reduce(accumulator) === playerXWin || winDiagChecker.reduce(accumulator) === playerOWin) {
-      console.log(`${currentPlayer.name} wins`)
+      // console.log(`${currentPlayer.name} wins`)
       gameOver = true
       ui.announceWinner(currentPlayer)
     }
@@ -151,7 +151,7 @@ const checkForRLDiagWin = function () {
     // if winDiagChecker can be reduced to three x or three o,
     // then the player wins.
     if (winDiagChecker.reduce(accumulator) === playerXWin || winDiagChecker.reduce(accumulator) === playerOWin) {
-      console.log(`${currentPlayer.name} wins`)
+      // console.log(`${currentPlayer.name} wins`)
       gameOver = true
       ui.announceWinner(currentPlayer)
     }
@@ -164,7 +164,7 @@ const checkForPlayersTie = function () {
   const checkForEmptyTile = val => val !== ''
   // getting double console logs because check for tie runs the checkForPlayerWin function
   if (!gameOver && gameBoard.every(checkForEmptyTile)) {
-    console.log('It\'s a tie!')
+    // console.log('It\'s a tie!')
     gameOver = true
     ui.announceTie()
   }

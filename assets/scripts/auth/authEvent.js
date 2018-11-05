@@ -5,9 +5,9 @@ const authUi = require('../auth/authUi.js')
 
 const onSignUp = event => {
   event.preventDefault()
-  console.log(event)
+  // console.log(event)
   const data = getFormFields(event.target)
-  console.log(data)
+  // console.log(data)
   authApi.signUp(data)
     .then(authUi.signUpSuccess)
     .catch(authUi.signUpFailure)
@@ -17,9 +17,9 @@ const onSignUp = event => {
 
 const onSignIn = event => {
   event.preventDefault()
-  console.log(event)
+  // console.log(event)
   const data = getFormFields(event.target)
-  console.log(data)
+  // console.log(data)
   authApi.signIn(data)
     .then(authUi.signInSuccess)
     .catch(authUi.signInFailure)

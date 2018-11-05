@@ -4,7 +4,7 @@ const userStore = require('../userStore.js')
 
 const signUp = function (data) {
   userStore.user = data
-  console.log(userStore.user)
+  // console.log(userStore.user)
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',

@@ -6,7 +6,7 @@ const addPlayerMoveValue = function (currentPlayer) {
 }
 
 const displayCurrentPlayer = function (currentPlayer) {
-  console.log(currentPlayer)
+  // console.log(currentPlayer)
   $('#message').html(`<h4> It's ${currentPlayer.name}'s turn </h4>`)
 }
 
@@ -35,7 +35,7 @@ const announceTie = function () {
 const saveGame = function (data) {
   // console.log(data)
   gameStore.game = data
-  console.log(gameStore.game)
+  // console.log(gameStore.game)
 }
 
 // const displayGameHistory = function (data) {

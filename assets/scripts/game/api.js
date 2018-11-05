@@ -13,7 +13,7 @@ const createGame = function () {
 
 const updateGame = function (currentPlayer, gameOver, tileSelected) {
   const userToken = userStore.user.user.token
-  console.log(gameStore.game)
+  // console.log(gameStore.game)
   const currentGame = gameStore.game.game.id
   return $.ajax({
     url: `${config.apiUrl}/games/${currentGame}`,

@@ -44,7 +44,7 @@ const signInSuccess = apiData => {
 const signInFailure = apiData => {
   $('#user').html(`<h4>Please try again</h4>`)
   $('#userAltMessage').html(`<h5>Sign in Failed, ${apiData.statusText}</h5>`)
-  console.error('signInFaliure ran. Data is:', apiData)
+  // console.error('signInFaliure ran. Data is:', apiData)
 }
 
 const signOutSuccess = function (apiData) {
