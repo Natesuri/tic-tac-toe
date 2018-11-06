@@ -51,7 +51,7 @@ const initializeBoard = boardLength => {
 
 const checkForOver = function () {
   checkForPlayerWin()
-  checkForPlayersTie()
+  if (!gameOver) { checkForPlayersTie() }
   // console.log('playerXWin is ' + playerXWin)
   // console.log(rowLength)
   // console.log(currentPlayer.moveValue)
@@ -86,7 +86,7 @@ const checkForColumnWin = function () {
       // if winColumnChecker can be reduced to three x or three o,
       // then the player wins.
       if (winColumnChecker.reduce(accumulator) === playerXWin || winColumnChecker.reduce(accumulator) === playerOWin) {
-        console.log(`${currentPlayer.name} wins`)
+        // console.log(`${currentPlayer.name} wins`)
         gameOver = true
         ui.announceWinner(currentPlayer)
       }
@@ -114,7 +114,7 @@ const checkForRowWin = function () {
       // if winColumnRowChecker can be reduced to three x or three o,
       // then the player wins.
       if (winRowChecker.reduce(accumulator) === playerXWin || winRowChecker.reduce(accumulator) === playerOWin) {
-        console.log(`${currentPlayer.name} wins`)
+        // console.log(`${currentPlayer.name} wins`)
         gameOver = true
         ui.announceWinner(currentPlayer)
       }
@@ -192,7 +192,7 @@ const onAddMoveValue = function (event) {
     // adds the player's value to the array at the index of the selected tile
       gameBoard[i] = currentPlayer.moveValue
       ui.addPlayerMoveValue(currentPlayer)
-      console.log(gameBoard)
+      // console.log(gameBoard)
       // console.log(currentPlayer)
       checkForOver()
       gameApi.updateGame(currentPlayer, gameOver, tileSelected)
@@ -212,8 +212,8 @@ const onGetGameHistory = function () {
 const onStartGame = function () {
   gameApi.createGame()
     .then(ui.saveGame)
-    .then(ui.hideShowNewGame)
     .then(initializeBoard(boardLength))
+  ui.hideNewGame()
   // console.log(gameBoard)
   if ($('#board').hasClass('hidden')) {
     ui.hideShowBoard()

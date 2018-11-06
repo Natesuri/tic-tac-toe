@@ -25,12 +25,12 @@ const gameOverErrorMessage = function () {
 const announceWinner = function (currentPlayer) {
   // console.log(`${currentPlayer.name} Wins!`)
   $('#message').html(`<h4> ${currentPlayer.name} Wins!</h4>`)
-  hideShowNewGame()
+  showNewGame()
 }
 
 const announceTie = function () {
   $('#message').html(`<h4>Tie Game!</h4>`)
-  hideShowNewGame()
+  showNewGame()
 }
 
 const saveGame = function (data) {
@@ -80,8 +80,16 @@ const hideShowBoard = function () {
   $('#game-message').toggleClass('hidden')
 }
 
-const hideShowNewGame = function () {
-  $('#start-game').toggleClass('hidden')
+const showNewGame = function () {
+  if ($('#start-game').hasClass('hidden')) {
+    $('#start-game').toggleClass('hidden')
+  }
+}
+
+const hideNewGame = function () {
+  if (!$('#start-game').hasClass('hidden')) {
+    $('#start-game').toggleClass('hidden')
+  }
 }
 
 // const hideShowPlayAgain = function () {
@@ -99,6 +107,7 @@ module.exports = {
   saveGame,
   displayGameHistory,
   hideShowBoard,
-  hideShowNewGame
+  hideNewGame,
+  showNewGame
   // hideShowPlayAgain
 }
