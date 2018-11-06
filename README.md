@@ -25,3 +25,6 @@ Unsolved and unfinished content
   of the user game history.
   Also want to make the board size dynamic. The game logic can handle any sized square board.
   Will use jquery to created board on game start and add ids to all the tile divs on creation.
+
+Wireframes and User Stories:
+  https://www.dropbox.com/sh/5jcibyd95t1z2la/AAAEpA_zZJ2FTOXLYh0TQykVa?dl=0
