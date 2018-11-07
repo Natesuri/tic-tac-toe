@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Suri-Tic-Tac-Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <header>
+        <h2 class='pageTitle'>Tic Tac Toe</h2>
+      </header>
+      <!-- Dummy forms for testing API communication -->
+      <div class='forms border'>
+        <form id='sign-up'>
+            <legend>Sign Up</legend>
+            <label>Email</label>
+            <input class='sign-up-form' name="credentials[email]" type="text">
+            <label>Password</label>
+            <input class='sign-up-form' name="credentials[password]" type="password">
+            <label>Confirm password</label>
+            <input class='sign-up-form' name="credentials[password_confirmation]" type="password">
+            <input type="submit" value='Sign Up'>
+        </form>
+        <form id='sign-in'>
+          <legend>Sign In</legend>
+          <label>Email</label>
+          <input class='sign-in-form' name="credentials[email]" type="text">
+          <label>Password</label>
+          <input class='sign-in-form' name="credentials[password]" type="password">
+          <input type="submit" value='Sign In'>
+        </form>
+        <form id='sign-out' class='hidden'>
+          <input type="submit" value='Sign Out'>
+        </form>
+        <form id='change-password' class='hidden'>
+          <legend>Change Password</legend>
+          <label>Old Password</label>
+          <input class='pass-form' name='passwords[old]' type='password'>
+          <label>New Password</label>
+          <input class='pass-form' name='passwords[new]' type='password'>
+          <input type="submit" value='Confirm Change Password'>
+      </div>
+      <main>
+        <div class='leftContent'>
+          <div class='UserBox'>
+            <div id='user' class='user'>
+              <h4>Please Sign In</h4>
+            </div>
+            <div id='userAltMessage' class='user'></div>
+
+            <div class='modal fade' id='history-modal'>
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Game History</h5>
+                    <button type="button" class="close dismiss" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&otimes;</span>
+                    </button>
+                  </div>
+                  <div id='user-history' class="modal-body">
+                    Here is your game history
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div id='userStats' class='hidden'>
+            </div> -->
+          </div>
+          <input id='start-game' type='button' value='Start New Game' class='hidden'>
+          <!-- <input id='play-again' type='button' value='Start New Game' class='hidden'> -->
+          <input id='get-history' type='button' data-toggle='modal' data-target='#history-modal' value='Get Game History' class='hidden'>
+        </div>
+        <div id='board' class='board hidden'>
+          <div class='row'>
+            <div id='0'class='tile'></div>
+            <div id='1' class='tile'></div>
+            <div id='2'class='tile'></div>
+          </div>
+          <div class='row'>
+            <div id='3'class='tile'></div>
+            <div id='4'class='tile'></div>
+            <div id='5'class='tile'></div>
+          </div>
+          <div class='row'>
+            <div id='6'class='tile'></div>
+            <div id='7'class='tile'></div>
+            <div id='8'class='tile'></div>
+          </div>
+        </div>
+        <div id='game-message' class='rightContent hidden'>
+          <div class='messageBox'>
+            <div id='message' class='message'>
+              <h4>It's Player X's turn</h4>
+            </div>
+            <div id='errorMessage' class='message'></div>
+          </div>
+        </div>
+      </main>
+    </body>
+</html>
