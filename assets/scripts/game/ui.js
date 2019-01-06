@@ -2,7 +2,7 @@ const gameStore = require('../gameStore.js')
 
 const addPlayerMoveValue = function (currentPlayer) {
   const clickedId = event.target.id
-  $('#' + clickedId).append(currentPlayer.moveValue)
+  $('#' + clickedId).html(`<p class='player-move'>${currentPlayer.moveValue}</p>`)
 }
 
 const displayCurrentPlayer = function (currentPlayer) {

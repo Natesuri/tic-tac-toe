@@ -33,6 +33,15 @@ main {
   width: $tile-width;
 }
 
+.player-move {
+  // padding: auto;
+  display: flex;
+  font-size: 100px;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
+}
+
 .rightContent {
   justify-content: flex-end;
 }
