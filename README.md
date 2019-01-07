@@ -1,4 +1,4 @@
-suri-tic-tac-toe-client
+Suri Tic Tac Toe v2
 
 A GA WDI portfolio project
 

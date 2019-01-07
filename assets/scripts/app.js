@@ -9,12 +9,13 @@ const authEvents = require('./auth/authEvent.js')
 const events = require('./game/event.js')
 
 $(() => {
+  // assigns auth event listeners
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
+  // assigns game event listeners
   $('#start-game').on('click', events.onStartGame)
-  // $('#play-again').on('click', events.onStartGame)
   $('#get-history').on('click', events.onGetGameHistory)
   $('.tile').on('click', events.onAddMoveValue)
   $('.dismiss').on('click', events.clearUserHistory)

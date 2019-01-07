@@ -5,21 +5,18 @@ const authUi = require('../auth/authUi.js')
 
 const onSignUp = event => {
   event.preventDefault()
-  // console.log(event)
+
   const data = getFormFields(event.target)
-  // console.log(data)
   authApi.signUp(data)
     .then(authUi.signUpSuccess)
     .catch(authUi.signUpFailure)
-  // onSignIn() need to get this to run only after the sign up is successful.
-  // .then() is asyncronous, so it doesn't work as currently arranged.
 }
 
 const onSignIn = event => {
   event.preventDefault()
-  // console.log(event)
+  // console.log(`pre gff`, event.target)
   const data = getFormFields(event.target)
-  // console.log(data)
+  // console.log(`post gff`, data)
   authApi.signIn(data)
     .then(authUi.signInSuccess)
     .catch(authUi.signInFailure)
