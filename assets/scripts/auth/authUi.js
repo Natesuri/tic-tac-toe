@@ -7,11 +7,10 @@ const clearUserErrorMessage = function () {
 }
 
 const hideShowAuth = function () {
-  $('#sign-up').toggleClass('hidden')
-  $('#sign-in').toggleClass('hidden')
-  $('#sign-out').toggleClass('hidden')
-  $('#change-password').toggleClass('hidden')
-  $('#get-history').toggleClass('hidden')
+  $('#login').toggle()
+  $('#sign-out').toggle()
+  $('#change-password').toggle()
+  $('#get-history').toggle()
 }
 
 const signUpSuccess = apiData => {
