@@ -15,25 +15,46 @@
       <header>
         <h2 class='pageTitle'>Tic Tac Toe</h2>
       </header>
-      <div class='forms border'>
-        <form id='sign-up'>
-            <legend>Sign Up</legend>
-            <label>Email</label>
-            <input class='sign-up-form' name="credentials[email]" type="text">
-            <label>Password</label>
-            <input class='sign-up-form' name="credentials[password]" type="password">
-            <label>Confirm password</label>
-            <input class='sign-up-form' name="credentials[password_confirmation]" type="password">
-            <input type="submit" value='Sign Up'>
-        </form>
-        <form id='sign-in'>
-          <legend>Sign In</legend>
-          <label>Email</label>
-          <input class='sign-in-form' name="credentials[email]" type="text">
-          <label>Password</label>
-          <input class='sign-in-form' name="credentials[password]" type="password">
-          <input type="submit" value='Sign In'>
-        </form>
+      <div id='login' class='login-forms'>
+        <!-- <h4>Please Sign Up or Sign in</h4> -->
+        <div>
+          <form id='sign-up'>
+              <legend>Sign Up</legend>
+              <div class='field'>
+                <label>Email</label>
+                <input class='sign-up-form' name="credentials[email]" type="text">
+              </div>
+              <div class='field'>
+                <label>Password</label>
+                <input class='sign-up-form' name="credentials[password]" type="password">
+              </div>
+              <div class='field'>
+                <label>Confirm password</label>
+                <input class='sign-up-form' name="credentials[password_confirmation]" type="password">
+              </div>
+              <div class='field submit'>
+                <input type="submit" value='Sign Up'>
+              </div>
+          </form>
+        </div>
+        <div>
+          <form id='sign-in'>
+            <legend>Sign In</legend>
+            <div class='field'>
+              <label>Email</label>
+              <input class='sign-in-form' name="credentials[email]" type="text">
+            </div>
+            <div class='field'>
+              <label>Password</label>
+              <input class='sign-in-form' name="credentials[password]" type="password">
+            </div>
+            <div class='field submit'>
+              <input type="submit" value='Sign In'>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class='forms'>
         <form id='sign-out' class='hidden'>
           <input type="submit" value='Sign Out'>
         </form>
@@ -46,11 +67,12 @@
           <input type="submit" value='Confirm Change Password'>
         </form>
       </div>
+
       <main>
         <div class='leftContent'>
           <div class='UserBox'>
             <div id='user' class='user'>
-              <h4>Please Sign In</h4>
+              <h4></h4>
             </div>
             <div id='userAltMessage' class='user'></div>
 

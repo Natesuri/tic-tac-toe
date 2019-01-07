@@ -1,6 +1,11 @@
 $tile-width: 200px;
 $tile-height: $tile-width;
 
+body {
+  background: $main-color;
+  // display: flex;
+}
+
 .center {
   margin: 0 auto;
 }
@@ -14,8 +19,35 @@ $tile-height: $tile-width;
   width: $tile-width;
 }
 
-.forms {
-  background: $board-background;
+.login-forms {
+  margin: 0 auto;
+  padding: 30px;
+  border: 5px solid $form-border-color;
+  border-radius: 3px;
+  background: $form-body-color;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  max-width: 600px;
+
+  h4 {
+    margin: 0 auto;
+  }
+}
+
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.submit {
+  align-items: flex-end;
+
+  input {
+    width: 30%;
+  }
 }
 
 main {
